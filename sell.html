@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Kenangan Kita</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, sans-serif;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:
+      radial-gradient(circle at center,
+      #341030 0%,
+      #130713 55%,
+      #070309 100%);
+      color:white;
+      overflow-x:hidden;
+      position:relative;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background-image:
+      radial-gradient(white 1px, transparent 1px),
+      radial-gradient(white 1px, transparent 1px);
+      background-size:55px 55px;
+      background-position:0 0, 27px 27px;
+      opacity:0.12;
+      z-index:-1;
+    }
+
+    section{
+      min-height:100vh;
+      padding:80px 8%;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      position:relative;
+    }
+
+    /* LOVE ATAS */
+    .top-hearts{
+      position:absolute;
+      top:10px;
+      width:100%;
+      display:flex;
+      justify-content:space-around;
+      opacity:0.5;
+    }
+
+    .top-hearts span{
+      color:#ff4fa1;
+      font-size:18px;
+      animation:float 3s infinite ease-in-out;
+    }
+
+    .top-hearts span:nth-child(2){
+      animation-delay:1s;
+    }
+
+    .top-hearts span:nth-child(3){
+      animation-delay:2s;
+    }
+
+    .top-hearts span:nth-child(4){
+      animation-delay:1.5s;
+    }
+
+    @keyframes float{
+      0%{
+        transform:translateY(0px);
+      }
+      50%{
+        transform:translateY(-10px);
+      }
+      100%{
+        transform:translateY(0px);
+      }
+    }
+
+    /* HERO */
+    .hero{
+      flex-direction:column;
+      text-align:center;
+    }
+
+    .hero h1{
+      font-size:75px;
+      margin-bottom:10px;
+    }
+
+    .hero h2{
+      font-size:65px;
+      background:linear-gradient(to right,#ff4fa1,#9b5cff);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      margin-bottom:20px;
+    }
+
+    .hero p{
+      max-width:700px;
+      color:#d0d0d0;
+      line-height:1.8;
+      font-size:20px;
+      margin-bottom:35px;
+    }
+
+    .btn{
+      padding:18px 40px;
+      border-radius:40px;
+      background:linear-gradient(to right,#ff4fa1,#ff78bb);
+      text-decoration:none;
+      color:white;
+      font-weight:bold;
+      transition:0.3s;
+      box-shadow:0 0 25px rgba(255,79,161,0.4);
+    }
+
+    .btn:hover{
+      transform:scale(1.05);
+    }
+
+    /* MEMORY */
+    .memory-container{
+      width:100%;
+      max-width:1200px;
+      display:flex;
+      gap:50px;
+      align-items:center;
+      background:rgba(255,255,255,0.03);
+      border:1px solid rgba(255,255,255,0.05);
+      border-radius:30px;
+      padding:50px;
+      backdrop-filter:blur(10px);
+    }
+
+    .memory-left{
+      flex:1;
+    }
+
+    .badge{
+      display:inline-block;
+      padding:10px 18px;
+      border-radius:30px;
+      background:rgba(255,79,161,0.12);
+      color:#ff78bb;
+      margin-bottom:25px;
+    }
+
+    .memory-left h1{
+      font-size:55px;
+      margin-bottom:20px;
+    }
+
+    .memory-left p{
+      color:#d4d4d4;
+      line-height:1.8;
+      margin-bottom:30px;
+      font-size:20px;
+    }
+
+    .info{
+      display:flex;
+      flex-direction:column;
+      gap:15px;
+      color:#d7d7d7;
+      font-size:18px;
+    }
+
+    .memory-right{
+      flex:1;
+    }
+
+    .memory-right img{
+      width:100%;
+      border-radius:25px;
+      box-shadow:0 0 30px rgba(255,79,161,0.3);
+    }
+
+    /* DISTANCE */
+    .distance{
+      flex-direction:column;
+      text-align:center;
+    }
+
+    .distance h1{
+      font-size:65px;
+      line-height:1.2;
+      margin-bottom:20px;
+      background:linear-gradient(to right,#ff4fa1,#b16cff);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    .subtitle{
+      color:#ccc;
+      margin-bottom:70px;
+      font-size:20px;
+    }
+
+    .distance-wrapper{
+      display:flex;
+      align-items:center;
+      gap:40px;
+      flex-wrap:wrap;
+      justify-content:center;
+      margin-bottom:70px;
+    }
+
+    .location-box{
+      width:320px;
+      padding:35px;
+      border-radius:25px;
+      background:rgba(255,255,255,0.03);
+      border:1px solid rgba(255,255,255,0.05);
+      font-size:30px;
+      font-weight:bold;
+      backdrop-filter:blur(10px);
+    }
+
+    .connection{
+      width:150px;
+      height:5px;
+      background:linear-gradient(to right,
+      transparent,
+      #ff4fa1,
+      #ff4fa1,
+      transparent);
+      box-shadow:0 0 20px #ff4fa1;
+      border-radius:20px;
+    }
+
+    .quote{
+      max-width:650px;
+      padding:30px;
+      border-radius:25px;
+      background:rgba(255,255,255,0.03);
+      border:1px solid rgba(255,255,255,0.05);
+      font-style:italic;
+      color:#d0d0d0;
+      font-size:22px;
+    }
+
+    /* PLAYLIST */
+    .playlist{
+      flex-direction:column;
+      text-align:center;
+    }
+
+    .playlist h1{
+      font-size:65px;
+      margin-bottom:15px;
+      background:linear-gradient(to right,#ff4fa1,#9b5cff);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    .cards{
+      display:flex;
+      gap:30px;
+      flex-wrap:wrap;
+      justify-content:center;
+      margin-top:60px;
+    }
+
+    .card{
+      width:300px;
+      background:rgba(255,255,255,0.03);
+      border-radius:25px;
+      padding:25px;
+      border:1px solid rgba(255,255,255,0.05);
+      transition:0.3s;
+    }
+
+    .card:hover{
+      transform:translateY(-10px);
+    }
+
+    .cover{
+      height:220px;
+      border-radius:20px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      font-size:70px;
+      margin-bottom:25px;
+    }
+
+    .pink{
+      background:linear-gradient(135deg,#ff4fa1,#c92f6f);
+    }
+
+    .purple{
+      background:linear-gradient(135deg,#b04cff,#ff4fa1);
+    }
+
+    .red{
+      background:linear-gradient(135deg,#ff4d5a,#cf2e45);
+    }
+
+    .song-title{
+      font-size:30px;
+      margin-bottom:10px;
+    }
+
+    .artist{
+      color:#ccc;
+      margin-bottom:25px;
+    }
+
+    .play-btn{
+      width:100%;
+      padding:15px;
+      border:none;
+      border-radius:15px;
+      background:#ff4fa1;
+      color:white;
+      font-size:16px;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .play-btn:hover{
+      opacity:0.8;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:900px){
+
+      .hero h1{
+        font-size:45px;
+      }
+
+      .hero h2{
+        font-size:38px;
+      }
+
+      .distance h1{
+        font-size:42px;
+      }
+
+      .playlist h1{
+        font-size:42px;
+      }
+
+      .memory-container{
+        flex-direction:column;
+      }
+
+      .connection{
+        width:5px;
+        height:120px;
+      }
+
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- LOVE -->
+  <div class="top-hearts">
+    <span>❤</span>
+    <span>❤</span>
+    <span>❤</span>
+    <span>❤</span>
+    <span>❤</span>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+
+    <h1>Website Kenangan</h1>
+
+    <h2>Tentang Kitaa.</h2>
+
+    <p>
+      Tempat menyimpan cerita, foto, dan lagu favorit kita berdua.
+      Semua momen spesial tersimpan di sini.
+    </p>
+
+    <a href="#memory" class="btn">
+      Lihat Cerita Kita
+    </a>
+
+  </section>
+
+  <!-- MEMORY -->
+  <section id="memory">
+
+    <div class="memory-container">
+
+      <div class="memory-left">
+
+        <div class="badge">
+          💖 Kenangan Terindah 
+        </div>
+
+        <h1>Pertama kalinya jalan bersama 💫</h1>
+
+        <p>
+          Moment ketika kita pertama kali jalan bersama sama, rasanya sangat indah sekali.
+        </p>
+
+        <div class="info">
+          <div>📅 14 Februari 2023</div>
+          <div>📍 Coffee Shop Favorite</div>
+        </div>
+
+      </div>
+
+      <div class="memory-right">
+
+        <img src="https://files.catbox.moe/w11r81.jpg">
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- DISTANCE -->
+  <section class="distance">
+
+    <h1>
+      Sayanggg Celpiii Selamanya 
+    </h1>
+
+    <div class="subtitle">
+      Tetap Bersama sama ya sayangg, jangann sampai kita pergi karna ke egoisan kita💫
+    </div>
+
+    <div class="distance-wrapper">
+
+      <div class="location-box">
+        📍 You — Di sana 🌸
+      </div>
+
+      <div class="connection"></div>
+
+      <div class="location-box">
+        📍 Me — Di sini 💖
+      </div>
+
+    </div>
+
+    <div class="quote">
+      "Distance means so little when someone means so much"
+    </div>
+
+  </section>
+
+  <!-- PLAYLIST -->
+  <section class="playlist">
+
+    <div class="badge">
+      🎵 Our Playlist
+    </div>
+
+    <h1>Lagu Favorit Kita 🎶</h1>
+
+    <div class="subtitle">
+      Setiap lagu punya cerita dan kenangan tersendiri
+    </div>
+
+    <div class="cards">
+
+      <!-- CARD 1 -->
+      <div class="card">
+
+        <div class="cover pink">❤</div>
+
+        <div class="song-title">
+          Aku Milikmu
+        </div>
+
+        <div class="artist">
+          Dewa 19
+        </div>
+
+        <button class="play-btn"
+        onclick="playSong('perfect')">
+          ▶ Play Song
+        </button>
+
+        <audio id="perfect">
+          <source src="https://mp3tourl.com/audio/1779634688684-08c3e3ee-121f-445c-b96b-530e1ea7d9c5.mp3" type="audio/mp3">
+        </audio>
+
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="card">
+
+        <div class="cover purple">❤</div>
+
+        <div class="song-title">
+          Penjaga Hati
+        </div>
+
+        <div class="artist">
+          Nadif Basalamah 
+        </div>
+
+        <button class="play-btn"
+        onclick="playSong('thousand')">
+          ▶ Play Song
+        </button>
+
+        <audio id="thousand">
+          <source src="https://mp3tourl.com/audio/1779635313379-92fb8db9-f089-479b-8e3a-a0dced27b2cf.mp3" type="audio/mp3">
+        </audio>
+
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="card">
+
+        <div class="cover red">❤</div>
+
+        <div class="song-title">
+          Lesung Pipi
+        </div>
+
+        <div class="artist">
+          Raim Laode
+        </div>
+
+        <button class="play-btn"
+        onclick="playSong('allofme')">
+          ▶ Play Song
+        </button>
+
+        <audio id="allofme">
+          <source src="https://mp3tourl.com/audio/1779635853430-694b9d43-e548-4739-ac2a-bed7d48b6af9.mp3" type="audio/mp3">
+        </audio>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <script>
+
+    function playSong(id){
+
+      let songs = document.querySelectorAll("audio");
+
+      songs.forEach(song => {
+        song.pause();
+        song.currentTime = 0;
+      });
+
+      document.getElementById(id).play();
+
+    }
+
+  </script>
+
+</body>
+</html>
